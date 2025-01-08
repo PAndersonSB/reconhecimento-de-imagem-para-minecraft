@@ -1,20 +1,20 @@
 from ultralytics import YOLO
 import cv2
-#from windowcapture import WindowCapture
-from linuxcapture import WindowCaptureLinux
+from windowcapture import WindowCapture
+#from linuxcapture import WindowCaptureLinux
 from collections import defaultdict
 import numpy as np
 
-import pyautogui  # Biblioteca para simular eventos de mouse
-#import pyDirectInput apenas windows
+#import pyautogui  # Biblioteca para simular eventos de mouse
+#import pyDirectInput #apenas windows
 from pynput.mouse import Controller ,Button
 
 import time 
 
-#wincap = WindowCapture("Nome_da_Janela")
+wincap = WindowCapture()
 offset_x = 0 #0
 offset_y = 0 #30
-wincap = WindowCaptureLinux(size=(800, 600), origin=(offset_x, offset_y))
+#wincap = WindowCaptureLinux(size=(800, 600), origin=(offset_x, offset_y))
 
 #offset_x = 50  # Ajuste o valor conforme necessário
 #offset_y = 50 # Ajuste o valor conforme necessário
@@ -69,14 +69,16 @@ while True:
             if nome_objeto == objeto_alvo:
                 print(f"Objeto '{objeto_alvo}' detectado em {x}, {y}")
                 # Capturar a posição atual do mouse
-                current_position = pyautogui.position()
+                #current_position = pyautogui.position()
+                
                 # Clique com pyDirectInput
                 #pyDirectInput.mouseDown(button="right")
                 #time.sleep(0.05)  # Clique curto
                 #pyDirectInput.mouseUp(button="right")
+                
                 mouse = Controller()
                 mouse.click(Button.right)
-                time.sleep(0.1)
+                time.sleep(3)
 
 
 
